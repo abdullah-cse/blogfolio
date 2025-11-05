@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr">
+
+<head>
+  {{ partial "head.html" . }}
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  {{ partial "header.html" . }}
+
+  <main id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+  <!-- Cursor Effect -->
+  {{ partial "cursor-effect.html" . }}
+</body>
+
+</html>

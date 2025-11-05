@@ -1,0 +1,25 @@
+*.psd
+*.ai
+*-original.*
+
+# Hugo build output
+/public/
+/resources/
+/hugo_stats.json
+.hugo_build.lock
+
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+
+# Deployment or build cache
+*.log
+.cache/
+tmp/
+.env

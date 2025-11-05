@@ -1,0 +1,158 @@
+{{ define "main" }}
+<article class="post-single">
+  <div class="container container-narrow">
+    <!-- Mobile TOC -->
+    <div class="toc-mobile">
+      {{ partial "toc.html" . }}
+    </div>
+
+    <div class="post-wrapper">
+      <!-- Main Content -->
+      <div class="post-main">
+        <header class="post-header">
+          {{ if .Params.image }}
+          <img src="{{ .Params.image }}" alt="{{ .Params.imageAlt | default .Title }}" class="post-image">
+          {{ end }}
+
+          <h1>{{ .Title }}</h1>
+
+          <div class="post-meta">
+            <time datetime="{{ .Date.Format " 2006-01-02" }}">
+              {{ .Date.Format "January 2, 2006" }}
+            </time>
+            {{ with .Params.author }}
+            <span class="separator">•</span>
+            <span class="author">{{ . }}</span>
+            {{ end }}
+            {{ with .ReadingTime }}
+            <span class="separator">•</span>
+            <span>{{ . }} min read</span>
+            {{ end }}
+          </div>
+
+          {{ with .Params.tags }}
+          <div class="post-tags">
+            {{ range . }}
+            <a href="/tags/{{ . | urlize }}" class="tag">#{{ . }}</a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </header>
+
+        <div class="post-content">
+          {{ .Content }}
+        </div>
+
+        {{ if or .NextInSection .PrevInSection }}
+        <nav class="post-nav" aria-label="Post navigation">
+          {{ with .PrevInSection }}
+          <a href="{{ .Permalink }}" class="post-nav-prev">
+            <span class="nav-label">← Previous</span>
+            <span class="nav-title">{{ .Title }}</span>
+          </a>
+          {{ end }}
+
+          {{ with .NextInSection }}
+          <a href="{{ .Permalink }}" class="post-nav-next">
+            <span class="nav-label">Next →</span>
+            <span class="nav-title">{{ .Title }}</span>
+          </a>
+          {{ end }}
+        </nav>
+        {{ end }}
+
+        <!-- Comments Section -->
+        {{ partial "comments.html" . }}
+      </div>
+
+      <!-- Desktop TOC Sidebar -->
+      <div class="toc-desktop">
+        {{ partial "toc.html" . }}
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- Copy Code Button Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Wrap all pre elements in a wrapper div
+    const preElements = document.querySelectorAll('.post-content pre');
+
+    preElements.forEach(function (pre) {
+      // Create wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-block-wrapper';
+
+      // Wrap the pre element
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      // Create copy button
+      const button = document.createElement('button');
+      button.className = 'copy-code-button';
+      button.setAttribute('aria-label', 'Copy code to clipboard');
+      button.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <span>Copy</span>
+      `;
+
+      // Add click event
+      button.addEventListener('click', async function () {
+        const code = pre.querySelector('code');
+        const text = code ? code.textContent : pre.textContent;
+
+        try {
+          await navigator.clipboard.writeText(text);
+
+          // Change button state
+          button.classList.add('copied');
+          button.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Copied!</span>
+          `;
+
+          // Reset after 2 seconds
+          setTimeout(function () {
+            button.classList.remove('copied');
+            button.innerHTML = `
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy</span>
+            `;
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy code:', err);
+          button.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="15" y1="9" x2="9" y2="15"></line>
+              <line x1="9" y1="9" x2="15" y2="15"></line>
+            </svg>
+            <span>Failed</span>
+          `;
+          setTimeout(function () {
+            button.innerHTML = `
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy</span>
+            `;
+          }, 2000);
+        }
+      });
+
+      // Add button to wrapper
+      wrapper.appendChild(button);
+    });
+  });
+</script>
+{{ end }}

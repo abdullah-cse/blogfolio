@@ -1,0 +1,8 @@
+User-agent: *
+{{ if eq (getenv "HUGO_ENV") "production" }}
+Disallow:
+{{ else }}
+Disallow: /
+{{ end }}
+
+Sitemap: {{ .Site.BaseURL }}/sitemap.xml
