@@ -1,0 +1,14 @@
+name = "BlogFolio"
+license = "MIT"
+licenselink = "https://github.com/abdullah-cse/blogfolio/blob/main/LICENSE"
+description = "A modern, SEO-optimized, mobile-first Hugo theme for personal portfolios and blogging."
+homepage = "https://github.com/abdullah-cse/blogfolio"
+demosite = "https://gohugo.io"
+tags = ["blog", "personal", "portfolio", "responsive", "seo", "minimal","light","dark mode", "clean"]
+features = ["blog", "responsive", "seo",  "mobile first", "portfolio", "dark mode"]
+
+min_version = "0.112.0"
+
+[author]
+  name = "MD ABDULLAH"
+  homepage = "https://abdullah.com.bd"

@@ -1,0 +1,215 @@
+baseURL = "https://abdullah.com.bd"
+languageCode = "en-us"
+title = "MD ABDULLAH"
+theme = "sara"
+
+# Content settings
+enableRobotsTXT = true
+enableGitInfo = false
+
+[pagination]
+pagerSize = 10
+
+# Markup settings for better SEO
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    lineNumbersInTable = false
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# Taxonomies
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+# Site parameters
+[params]
+description = "Fast and Beautiful App Developer" # Used in meta tags
+author = "MD ABDULLAH"
+image = "/images/avatar.png" # Used in meta tags
+twitter = "@abdullahpdb" # Used in meta tags
+authorImage = "/images/avatar.png" # Used in every blog post author section
+authorTagline = "Father of 2, App Developer, Tech Enthusiast" # Used in every blog post author section
+
+
+# Table of Contents
+showTOC = true
+
+# Cursor Effect
+enableCursorEffect = true # Set to false to disable the smoky cursor effect
+
+# Hero Section
+avatar = "/images/avatar.png"
+hero_title = "Hi, I'm MD ABDULLAH"
+hero_subtitle = "Flutter Developer crafting high-performance mobile experiences and open-source packages"
+
+[params.hero_cta]
+primary_text = "View My Work"
+primary_url = "/projects/"
+secondary_text = "Read My Blog"
+secondary_url = "/blog/"
+
+# Skills Section
+[[params.skills]]
+name = "Flutter Development"
+icon = "📱"
+description = "Building cross-platform mobile apps with Flutter and Dart"
+items = ["Flutter", "Dart", "Custom Widgets", "State Management", "Firebase"]
+
+[[params.skills]]
+name = "Package Development"
+icon = "📦"
+description = "Creating reusable, well-documented packages for the community"
+items = ["pub.dev", "API Design", "Documentation", "Testing", "CI/CD"]
+
+[[params.skills]]
+name = "Open Source"
+icon = "🌟"
+description = "Contributing to and maintaining open-source projects"
+items = ["Git", "GitHub", "Code Review", "Community Management"]
+
+# Tech Stack Section
+[[params.tech_stack]]
+category = "Languages"
+technologies = ["Dart", "C", "C++", "C#", "JavaScript", "HTML", "CSS"]
+
+[[params.tech_stack]]
+category = "Frameworks & Tools"
+technologies = ["Flutter", "Firebase", "Git", "Hugo", "VS Code", "Android Studio"]
+
+
+[[params.tech_stack]]
+category = "Platforms"
+technologies = ["Android", "iOS", "Web", "Linux", "macOS", "Windows"]
+
+# Featured Projects
+[[params.featured_projects]]
+name = "Contribution Heatmap"
+description = "A high-performance, GitHub-like contribution heatmap widget for Flutter. Built with custom RenderBox for maximum efficiency."
+image = "/images/projects/contribution-heatmap.jpg"
+technologies = ["Flutter", "Dart", "Custom RenderBox", "Canvas API"]
+demo_url = ""
+github_url = "https://github.com/abdullah-cse/contribution_heatmap"
+
+[[params.featured_projects]]
+name = "Streak Calculator"
+description = "High-performance Dart package for tracking daily, weekly, and monthly streaks with custom goals and flexible configurations."
+image = "/images/projects/streak-calculator.jpg"
+technologies = ["Dart", "Algorithms", "Date Handling"]
+demo_url = ""
+github_url = "https://github.com/abdullah-cse/streak_calculator"
+
+
+
+# Projects page URL
+projects_page_url = "/projects/"
+
+# Giscus Comments Configuration
+[params.giscus]
+enabled = true                   # Set to true when you set up Giscus
+repo = "abdullah-cse/abdullah-bd"
+repo_id = "R_kgDOQP5s_Q"
+category = "Announcements"
+category_id = "DIC_kwDOQP5s_c4CxvLk"
+mapping = "pathname"
+strict = "0"
+reactions_enabled = "1"
+emit_metadata = "0"
+input_position = "top"
+theme = "preferred_color_scheme"
+lang = "en"
+loading = "lazy"
+
+# Main menu
+[menu]
+  # Header menu
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+    
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+
+
+  # Footer menu
+  [[menu.footer]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 1
+
+  [[menu.footer]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 2
+
+# Privacy settings (GDPR compliant)
+[privacy]
+[privacy.disqus]
+disable = true
+[privacy.googleAnalytics]
+disable = false
+anonymizeIP = true
+respectDoNotTrack = true
+[privacy.instagram]
+disable = false
+simple = true
+[privacy.x]
+disable = false
+enableDNT = true
+simple = true
+[privacy.vimeo]
+disable = false
+simple = true
+[privacy.youtube]
+disable = false
+privacyEnhanced = true
+
+# Output formats
+[outputs]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+
+# Social links
+[[params.social]]
+name = "link"
+url = "https://typefast.app?utm_source=abdullah&utm_medium=referral&utm_campaign=website_referral"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/abdullah-cse"
+
+[[params.social]]
+name = "x"
+url = "https://x.com/abdullahPDB"
+
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/md-abdullah-abb635232/"
+
+[[params.social]]
+name = "youtube"
+url = "https://youtube.com/@fixit_dart"
+
+[[params.social]]
+name = "telegram"
+url = "https://t.me/abdullahcse"

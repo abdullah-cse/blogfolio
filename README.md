@@ -1,9 +1,9 @@
-# Sara - Hugo Theme
+# BlogFolio - Hugo Theme
 
 A modern, SEO-optimized, mobile-first Hugo theme designed for developers and designers to showcase their personal brand, skills, projects, and blog content.
 
 **Created by:** MD ABDULLAH  
-**Website:** [abdullah.bd](https://abdullah.bd)
+**Website:** [abdulah.com.bd](https://abdullah.bd)
 
 ![Theme Preview](screenshot.png)
 
@@ -46,17 +46,17 @@ cd my-portfolio
 ```bash
 # Option 1: Clone as git submodule (recommended)
 git init
-git submodule add https://github.com/md-abdullah/hugo-sara.git themes/sara
+git submodule add https://github.com/abdullah-cse/blogfolio.git themes/blogfolio
 
 # Option 2: Clone directly
-git clone https://github.com/md-abdullah/hugo-sara.git themes/sara
+git clone https://github.com/abdullah-cse/blogfolio.git themes/blogfolio
 
 # Option 3: Download and extract the theme manually
 ```
 
 3. **Copy example config:**
 ```bash
-cp themes/sara/exampleSite/config.toml config.toml
+cp themes/blogfolio/exampleSite/config.toml config.toml
 ```
 
 4. **Add your content:**
@@ -87,7 +87,7 @@ Edit `config.toml` to customize your site:
 ```toml
 baseURL = "https://yoursite.com"
 title = "Your Name - Developer & Designer"
-theme = "sara"
+theme = "blogfolio"
 
 [params]
   author = "Your Name"
@@ -477,10 +477,10 @@ MIT License - feel free to use this theme for your personal or commercial projec
 
 ## 💬 Support
 
-- **Issues**: [GitHub Issues](https://github.com/md-abdullah/hugo-sara/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/md-abdullah/hugo-sara/discussions)
-- **Website**: [abdullah.bd](https://abdullah.bd)
+- **Issues**: [GitHub Issues](https://github.com/abdullah-cse/blogfolio/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/abdullah-cse/blogfolio/discussions)
+- **Website**: [abdullah.com.bd](https://abdullah.com.bd)
 
 ---
 
-Made with ❤️ by [MD ABDULLAH](https://abdullah.bd)
+Made with ❤️ by [MD ABDULLAH](https://abdullah.com.bd)
