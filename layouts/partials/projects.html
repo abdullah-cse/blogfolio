@@ -1,0 +1,106 @@
+<!-- 
+  Reusable Projects Partial
+  Parameters:
+  - projects: collection of project pages
+  - show_filters: boolean to show/hide tag filters (default: true)
+  - limit: number of projects to show (optional, shows all if not set)
+-->
+
+{{ $projects := .projects }}
+{{ $show_filters := default true .show_filters }}
+{{ $limit := .limit }}
+
+{{ if $projects }}
+{{ $all_tags := slice }}
+
+<!-- Collect all unique tags from projects -->
+{{ range $projects }}
+{{ with .Params.tags }}
+{{ $all_tags = $all_tags | append . }}
+{{ end }}
+{{ end }}
+
+{{ $all_tags = $all_tags | uniq }}
+
+<!-- Tag Filters -->
+{{ if and $show_filters (gt (len $all_tags) 0) }}
+<div class="tag-filters">
+    <button class="tag-btn active" data-tag="all">All</button>
+    {{ range $all_tags }}
+    <button class="tag-btn" data-tag="{{ . | urlize }}">{{ . }}</button>
+    {{ end }}
+</div>
+{{ end }}
+
+<!-- Projects Grid -->
+<div class="projects-grid">
+    {{ $displayed := 0 }}
+    {{ range $projects }}
+    {{ if or (not $limit) (lt $displayed $limit) }}
+    {{ $tags := delimit .Params.tags "," }}
+
+    <a href="{{ .Permalink }}" class="project-card" data-tags="{{ $tags }}">
+        <!-- Project Image -->
+        {{ if .Params.image }}
+        <div class="project-image">
+            <img src="{{ .Params.image }}" alt="{{ .Params.imageAlt | default .Title }}" loading="lazy">
+        </div>
+        {{ end }}
+
+        <!-- Project Content -->
+        <div class="project-content">
+            <!-- Pin Badge for Pinned Projects -->
+            {{ if .Params.pinProject }}
+            <span class="project-pin-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M16 9V4h1c.55 0 1-.45 1-1s-.45-1-1-1H7c-.55 0-1 .45-1 1s.45 1 1 1h1v5c0 1.66-1.34 3-3 3v2h5.97v7l1 1 1-1v-7H19v-2c-1.66 0-3-1.34-3-3z" />
+                </svg>
+                Pinned
+            </span>
+            {{ end }}
+
+            <h3 class="project-title">{{ .Title }}</h3>
+            <p class="project-description">{{ .Params.description | default .Summary }}</p>
+
+            <!-- Technologies -->
+            {{ with .Params.technologies }}
+            <div class="project-tech">
+                {{ range . }}
+                <span class="tech-tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+
+            <!-- Project Meta Info -->
+            <div class="project-meta">
+                {{ with .Params.status }}
+                <span class="project-status">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    {{ . }}
+                </span>
+                {{ end }}
+
+                {{ with .Params.year }}
+                <span class="project-year">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    {{ . }}
+                </span>
+                {{ end }}
+            </div>
+        </div>
+    </a>
+
+    {{ $displayed = add $displayed 1 }}
+    {{ end }}
+    {{ end }}
+</div>
+{{ end }}

@@ -12,3 +12,10 @@
     </div>
   </div>
 </footer>
+
+<!-- Project Filter JavaScript -->
+{{- $projectFilterJS := resources.Get "js/project_filter.js" -}}
+{{- if $projectFilterJS -}}
+{{- $js := $projectFilterJS | minify | fingerprint -}}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{- end -}}

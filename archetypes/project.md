@@ -3,18 +3,21 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 
+# Pin this project on homepage (true/false)
+pinProject: false
+
 # SEO
 description: "A brief description of your project (150-160 characters)"
 keywords: ["project", "keyword1", "keyword2"]
-tags: ["tag1", "tag2"]
+tags: ["Theme", "Hugo", "Flutter", "JavaScript"]
 
 # Project Details
 image: "/images/projects/{{ .Name }}.jpg"
 imageAlt: "Screenshot or preview of {{ replace .Name "-" " " | title }}"
 
-# Project Links
-demo_url: "https://demo.example.com"
-github_url: "https://github.com/username/repo"
+# Project Links (optional)
+demo_url: ""
+github_url: ""
 technologies: ["Tech1", "Tech2", "Tech3"]
 
 # Status (optional)
