@@ -9,20 +9,23 @@ pinProject: false
 # SEO
 description: "A brief description of your project (150-160 characters)"
 keywords: ["project", "keyword1", "keyword2"]
-tags: ["Theme", "Hugo", "Flutter", "JavaScript"]
+tags: ["Flutter", "Dart", "Hugo", "JavaScript"]
 
 # Project Details
-image: "/images/projects/{{ .Name }}.jpg"
+# For folder-based projects, use relative path like "featured.jpg"
+# For absolute paths, use "/images/projects/project-name.jpg"
+image: "featured.jpg"
 imageAlt: "Screenshot or preview of {{ replace .Name "-" " " | title }}"
 
-# Project Links (optional)
+# Project Links (optional - leave empty string if not applicable)
 demo_url: ""
-github_url: ""
-technologies: ["Tech1", "Tech2", "Tech3"]
+github_url: "https://github.com/username/repo"
+technologies: ["Flutter", "Dart", "Firebase"]
 
-# Status (optional)
-status: "Completed" # Completed, In Progress, Maintained
-year: "2024"
+# Options: Active, Maintained, Archived, Deprecated
+status: "Active"
+# Year when project started being maintained
+maintainedSince: "{{ .Date | dateFormat "2006" }}"
 ---
 
 ## Overview
@@ -31,29 +34,34 @@ Brief overview of the project and what problem it solves.
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Feature 1: Description
+- Feature 2: Description
+- Feature 3: Description
 
 ## Technologies Used
 
-- **Frontend:** React, TypeScript, Tailwind CSS
-- **Backend:** Node.js, Express
-- **Database:** PostgreSQL
-- **Deployment:** Vercel
+- **Frontend:** Flutter, Dart
+- **Backend:** Firebase
+- **Tools:** VS Code, Git
+- **Deployment:** Play Store, App Store
 
 ## Challenges & Solutions
 
-Describe key challenges faced and how you solved them.
+Describe key challenges you faced and how you solved them.
 
 ## Results
 
-What was the outcome? User feedback? Performance metrics?
+What was the outcome? User feedback? Downloads? Performance metrics?
 
 ## Screenshots
 
-![Project Screenshot](/images/projects/{{ .Name }}-screenshot.jpg)
+![Project Screenshot](screenshot-1.jpg)
+![Another Screenshot](screenshot-2.jpg)
 
 ## Lessons Learned
 
-What did you learn from this project?
+What did you learn from this project? What would you do differently next time?
+
+## Future Plans
+
+What improvements or features are you planning to add?

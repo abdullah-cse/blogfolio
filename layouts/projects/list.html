@@ -1,4 +1,3 @@
-<!-- Projects Page Template -->
 {{ define "main" }}
 <div class="projects-page">
   <div class="container">
@@ -10,38 +9,39 @@
       {{ end }}
     </header>
 
-    {{ $all_projects := where .Site.RegularPages "Section" "projects" }}
+    <!-- Get all project pages -->
+    {{ $all_projects := .Pages }}
     {{ $pinned_projects := where $all_projects "Params.pinProject" true }}
-    {{ $other_projects := where $all_projects "Params.pinProject" "!=" true }}
-    
-    {{ if gt (len $all_projects) 0 }}
-      <!-- Pinned Projects Section -->
-      {{ if gt (len $pinned_projects) 0 }}
-      <section class="pinned-projects-section">
-        <div class="projects-section-header">
-          <h2>Pinned Projects</h2>
-          <p>My highlighted work</p>
-        </div>
-        
-        {{ partial "projects.html" (dict "projects" $pinned_projects "show_filters" false) }}
-      </section>
-      {{ end }}
-      
-      <!-- All Projects Section with Filters -->
-      <section class="all-projects-section">
-        {{ if gt (len $pinned_projects) 0 }}
-        <div class="projects-section-header">
-          <h2>All Projects</h2>
-          <p>Explore my complete portfolio</p>
-        </div>
-        {{ end }}
-        
-        {{ partial "projects.html" (dict "projects" $all_projects "show_filters" true) }}
-      </section>
-    {{ else }}
-      <div class="no-projects">
-        <p>No projects found. Check back soon!</p>
+    {{ $has_projects := gt (len $all_projects) 0 }}
+    {{ $has_pinned := gt (len $pinned_projects) 0 }}
+
+    {{ if $has_projects }}
+    <!-- Pinned Projects Section -->
+    {{ if $has_pinned }}
+    <section class="pinned-projects-section">
+      <div class="projects-section-header">
+        <h2>Pinned Projects</h2>
+        <p>My highlighted work</p>
       </div>
+      {{ partial "projects.html" (dict "projects" $pinned_projects "show_filters" false) }}
+    </section>
+    {{ end }}
+
+    <!-- All Projects Section -->
+    <section class="all-projects-section">
+      {{ if $has_pinned }}
+      <div class="projects-section-header">
+        <h2>All Projects</h2>
+        <p>Explore my complete portfolio</p>
+      </div>
+      {{ end }}
+      {{ partial "projects.html" (dict "projects" $all_projects "show_filters" true) }}
+    </section>
+    {{ else }}
+    <!-- Empty State -->
+    <div class="no-projects">
+      <p>No projects found. Check back soon!</p>
+    </div>
     {{ end }}
   </div>
 </div>

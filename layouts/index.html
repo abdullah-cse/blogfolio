@@ -1,4 +1,3 @@
-<!-- Home Page Template -->
 {{ define "main" }}
 <!-- Hero Section -->
 <section class="hero">
@@ -69,9 +68,12 @@
 </section>
 {{ end }}
 
-<!-- Pinned Projects Section -->
-{{ $all_projects := where .Site.RegularPages "Section" "projects" }}
+<!-- Featured Projects Section -->
+{{ $all_projects := where .Site.RegularPages "Type" "projects" }}
 {{ $pinned_projects := where $all_projects "Params.pinProject" true }}
+{{ $has_more_projects := gt (len $all_projects) (len $pinned_projects) }}
+{{ $projects_url := .Site.Params.projects_page_url | default "/projects/" }}
+
 {{ if gt (len $pinned_projects) 0 }}
 <section class="projects-section">
   <div class="container">
@@ -83,9 +85,9 @@
     {{ partial "projects.html" (dict "projects" $pinned_projects "show_filters" true) }}
 
     <!-- Show More Button -->
-    {{ if gt (len $all_projects) (len $pinned_projects) }}
+    {{ if $has_more_projects }}
     <div class="show-more-container">
-      <a href="/projects/" class="btn">
+      <a href="{{ $projects_url }}" class="btn">
         View All Projects
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M5 12h14M12 5l7 7-7 7" />
