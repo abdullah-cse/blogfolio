@@ -97,10 +97,20 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+<!-- CSS Bundle with Safe Loading -->
 {{- $mainCSS := resources.Get "css/main.css" -}}
 {{- $syntaxCSS := resources.Get "css/syntax.css" -}}
-{{- $css := slice $mainCSS $syntaxCSS | resources.Concat "css/bundle.css" | minify | fingerprint -}}
-<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{- $cssSlice := slice $mainCSS $syntaxCSS -}}
+
+{{- $projectFilterCSS := resources.Get "css/project_filter.css" -}}
+{{- if $projectFilterCSS -}}
+  {{- $cssSlice = $cssSlice | append $projectFilterCSS -}}
+{{- end -}}
+
+{{- if $cssSlice -}}
+  {{- $css := $cssSlice | resources.Concat "css/bundle.css" | minify | fingerprint -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{- end -}}
 
 <!-- Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

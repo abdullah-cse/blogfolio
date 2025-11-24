@@ -2,6 +2,7 @@
 title: "Streak Calculator"
 date: 2024-10-20
 draft: false
+pinProject: true
 
 # SEO
 description: "High-performance Dart package for tracking daily, weekly, and monthly streaks with custom goals and flexible configurations"
@@ -18,8 +19,8 @@ github_url: "https://github.com/abdullah-cse/streak_calculator"
 technologies: ["Dart", "Algorithms", "Date Handling"]
 
 # Status
-status: "Maintained"
-year: "2024"
+status: "Archived"
+maintainedSince: "2022"
 ---
 
 ## Overview
@@ -153,10 +154,10 @@ final studyStreak = StreakCalculator(
 ## Performance Benchmarks
 
 | Dataset Size | Calculation Time |
-|--------------|------------------|
-| 100 dates    | <1 ms           |
-| 1,000 dates  | 2-3 ms          |
-| 10,000 dates | 15-20 ms        |
+| ------------ | ---------------- |
+| 100 dates    | <1 ms            |
+| 1,000 dates  | 2-3 ms           |
+| 10,000 dates | 15-20 ms         |
 
 ## Challenges Overcome
 

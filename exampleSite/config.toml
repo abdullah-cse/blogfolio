@@ -1,7 +1,7 @@
 baseURL = "https://abdullah.com.bd"
 languageCode = "en-us"
 title = "MD ABDULLAH"
-theme = "sara"
+theme = "blogfolio"
 
 # Content settings
 enableRobotsTXT = true
@@ -106,10 +106,6 @@ technologies = ["Dart", "Algorithms", "Date Handling"]
 demo_url = ""
 github_url = "https://github.com/abdullah-cse/streak_calculator"
 
-
-
-# Projects page URL
-projects_page_url = "/projects/"
 
 # Giscus Comments Configuration
 [params.giscus]

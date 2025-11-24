@@ -1,25 +1,18 @@
 ---
 title: "Contribution Heatmap"
-date: 2024-11-15
+date: 2024-01-15
 draft: false
+pinProject: true
 
-# SEO
-description: "A high-performance, GitHub-like contribution heatmap widget for Flutter with custom RenderBox implementation"
-keywords: ["flutter", "dart", "heatmap", "widget", "performance"]
-tags: ["Flutter", "Dart", "Open Source", "Widget"]
-
-# Project Details
+description: "A high-performance, GitHub-like contribution heatmap widget for Flutter."
+tags: ["Flutter", "Dart"]
+technologies: ["Flutter", "Dart", "Custom RenderBox"]
 image: "featured.jpg"
-imageAlt: "GitHub-style contribution heatmap widget for Flutter"
-
-# Project Links
-demo_url: ""
+imageAlt: "Contribution Heatmap Preview"
+demo_url: "https://abdullah.com.bd"
 github_url: "https://github.com/abdullah-cse/contribution_heatmap"
-technologies: ["Flutter", "Dart", "Custom RenderBox", "Canvas API"]
-
-# Status
 status: "Active"
-year: "2024"
+maintainedSince: "2024"
 ---
 
 ## Overview
